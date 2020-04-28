@@ -2,7 +2,7 @@
   <div class="container">
     <el-row class="tool-box" type="flex" justify="center" align="middle">
       <el-col :span="12" class="draw-left">
-        <el-col :span="24" :offset="10">
+        <el-col :span="24" :offset="clientWidth < 1500 ? 4 : clientWidth < 1700 && clientWidth >= 1500 ? 5 : 10">
           <div class="literally" @mousewheel.ctrl.prevent="triggerZoom($event)"></div>
         </el-col>
         <el-col :span="24" :offset="10">
@@ -120,13 +120,17 @@ export default {
       inputNum: 5,
       zoomTimes: 3, // 滚轮滚动放大/缩小的倍数
       sizeIsNumber: true,
-      jsonData: ''
+      jsonData: '',
+      clientWidth: 0
     }
   },
   computed: {
     colorInput () {
       return this.canvasBgColor
     }
+  },
+  created () {
+    this.clientWidth = document.body.clientWidth
   },
   mounted () {
     var that = this
@@ -218,7 +222,6 @@ export default {
   },
   methods: {
     triggerZoom (event) {
-      console.log(event)
       let isDown = true
       isDown = event.wheelDelta ? event.wheelDelta < 0 : event.detail > 0
       if (isDown) {
@@ -227,7 +230,6 @@ export default {
       } else {
         this.lc.setZoom(this.suo += Number(this.zoomBig/this.zoomTimes))
       }
-      console.log(isDown)
     },
     canvasColorChange (color) {
       this.lc.setColor('background', color)
@@ -256,6 +258,9 @@ export default {
 </script>
 
 <style scoped lang="less">
+.container {
+  min-width: 1366px;
+}
 .pencil-num {
   width: 220px;
   height: 30px;

@@ -14,10 +14,10 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "precache-manifest.58db34b26a8c7099a724ddf26468b25d.js"
+  "precache-manifest.84a8d82d1be49bc1e8ed17ce3f441124.js"
 );
 
-workbox.core.setCacheNameDetails({prefix: "draw-demo"});
+workbox.core.setCacheNameDetails({prefix: "literallycanvas-vue"});
 
 self.addEventListener('message', (event) => {
   if (event.data && event.data.type === 'SKIP_WAITING') {
