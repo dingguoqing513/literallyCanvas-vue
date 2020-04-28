@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "precache-manifest.84a8d82d1be49bc1e8ed17ce3f441124.js"
+  "precache-manifest.58d9d9eb8051231db86f081088a3f573.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "literallycanvas-vue"});
